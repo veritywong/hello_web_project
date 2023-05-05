@@ -1,6 +1,12 @@
 require 'sinatra/base'
+require 'sinatra/reloader'
 
 class Application < Sinatra::Base
+
+    configure :development do
+        register Sinatra::Reloader
+      end
+    
     get '/' do
         @greeting = params[:greeting]
 
@@ -10,7 +16,7 @@ class Application < Sinatra::Base
     get '/hello' do
         @name = params[:name]
 
-        return "Hello #{@name}"
+        return erb(:hello)
     end
        
     get '/names' do
