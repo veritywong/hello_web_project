@@ -8,15 +8,15 @@ class Application < Sinatra::Base
     end
     
     get '/hello' do
-        name = params[:name]
+        @name = params[:name]
 
-        return "Hello #{name}"
+        return "Hello #{@name}"
     end
        
     get '/names' do
-        names = params[:names]
+        @names = params[:names]
 
-        return "#{names}"
+        return "#{@names}"
     end
 
     post '/sort-names' do
